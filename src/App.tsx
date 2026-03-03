@@ -1,12 +1,19 @@
-import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PageLayOut from "./pages/PageLayOut";
+import HomePage from "./pages/HomePage";
 
-export default function App() {
+function App() {
   return (
-    <>
-      <div className="bg-black h-screen w-full">
-        <NavBar />
-      </div>
-      <div className="bg-black h-screen w-full"></div>
-    </>
+    <Router>
+      <Routes>
+        <Route element={<PageLayOut />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
+
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
+      </Routes>
+    </Router>
   );
 }
+
+export default App;
