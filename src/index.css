@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* @font-face {
+  font-family: ;
+  src: url();
+} */
+
 @theme {
   --font-primary: "Poppins", sans-serif;
 }

@@ -34,7 +34,7 @@ const NavBar: React.FC = () => {
   }, [isDarkMode]);
 
   const navLinks = [
-    { name: "Home", href: "#" },
+    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Experience", href: "#experience" },
@@ -43,7 +43,7 @@ const NavBar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed inset-0 top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-300 ease-in-out ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-300 ease-in-out ${
         isScrolled
           ? "py-3 bg-white/10 dark:bg-gray-900/40 backdrop-blur-xl border border-white/20 dark:border-gray-700 shadow-2xl rounded-2xl"
           : "py-5 bg-transparent border-transparent"
@@ -55,9 +55,6 @@ const NavBar: React.FC = () => {
           <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-700 flex items-center justify-center text-white font-bold text-xl shadow-lg">
             A
           </div>
-          <span className="text-gray-900 dark:text-white font-bold text-xl tracking-tight hidden sm:block">
-            Arr Mann
-          </span>
         </div>
 
         <div className="flex flex-row items-center gap-8">
