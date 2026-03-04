@@ -43,7 +43,7 @@ const NavBar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-300 ease-in-out ${
+      className={`fixed inset-0 top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-300 ease-in-out ${
         isScrolled
           ? "py-3 bg-white/10 dark:bg-gray-900/40 backdrop-blur-xl border border-white/20 dark:border-gray-700 shadow-2xl rounded-2xl"
           : "py-5 bg-transparent border-transparent"
