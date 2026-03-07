@@ -49,7 +49,7 @@ const NavBar: React.FC = () => {
       <div className="px-6 md:px-10 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-[var(--color-accent)] flex items-center justify-center text-white font-bold text-xl shadow-lg">
+          <div className="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold text-xl shadow-lg">
             A
           </div>
         </div>
