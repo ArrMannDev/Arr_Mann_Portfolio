@@ -3,11 +3,8 @@ import React, { useState, useEffect } from "react";
 const NavBar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    // Check saved theme in localStorage
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) return savedTheme === "dark";
-
-    // If no saved theme, use system preference
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
@@ -43,16 +40,16 @@ const NavBar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed inset-0 top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-300 ease-in-out ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-300 ease-in-out ${
         isScrolled
-          ? "py-3 bg-white/10 dark:bg-gray-900/40 backdrop-blur-xl border border-white/20 dark:border-gray-700 shadow-2xl rounded-2xl"
+          ? "py-3 bg-[var(--color-card)]/80 backdrop-blur-xl border border-[var(--color-text-secondary)]/30 shadow-2xl rounded-2xl"
           : "py-5 bg-transparent border-transparent"
       }`}
     >
       <div className="px-6 md:px-10 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-700 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+          <div className="w-10 h-10 rounded-full bg-[var(--color-accent)] flex items-center justify-center text-white font-bold text-xl shadow-lg">
             A
           </div>
         </div>
@@ -64,24 +61,26 @@ const NavBar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-900/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm font-medium relative group"
+                className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors duration-200 text-sm font-medium relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-700 transition-all duration-300 group-hover:w-full" />
+
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
 
-          {/* Call to Action Button */}
+          {/* Buttons */}
           <div className="flex items-center gap-4">
-            <button className="px-6 py-2 rounded-full bg-gray-900/30 dark:bg-gray-800/30 hover:bg-gray-800/50 dark:hover:bg-gray-800/50 border border-white/30 dark:border-gray-600 dark:text-white text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
+            {/* Resume Button */}
+            <button className="px-6 py-2 rounded-full bg-[var(--color-card)] text-[var(--color-text)] border border-[var(--color-text-secondary)] text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
               Resume
             </button>
 
-            {/* Toggle Light/Dark */}
+            {/* Theme Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="px-6 py-2 rounded-full bg-gray-900/30 dark:bg-gray-800/30 hover:bg-gray-800/50 dark:hover:bg-gray-800/50 border border-white/30 dark:border-gray-600 dark:text-white text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+              className="px-6 py-2 rounded-full bg-[var(--color-card)] text-[var(--color-text)] border border-[var(--color-text-secondary)] text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
             >
               {isDarkMode ? "Light☀️" : "Dark🌙"}
             </button>

@@ -6,6 +6,25 @@
   src: url();
 } */
 
+/* Light theme */
+:root {
+  --color-bg: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-text: #0F172A;
+  --color-text-secondary: #475569;
+  --color-accent: #DE9323;
+}
+
+/* Dark theme */
+.dark {
+  --color-bg: #0F172A;
+  --color-card: #1E293B;
+  --color-text: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-accent: #DE9323;
+}
+
 @theme {
   --font-primary: "Poppins", sans-serif;
+  
 }
