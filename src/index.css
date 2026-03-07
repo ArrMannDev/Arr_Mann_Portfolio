@@ -1,10 +1,17 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* @font-face {
-  font-family: ;
-  src: url();
-} */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url("fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url("fonts/DM_Mono/DMMono-Regular.ttf");
+  font-style: normal;
+}
 
 /* Light theme */
 :root {
@@ -26,5 +33,6 @@
 
 @theme {
   --font-primary: "Poppins", sans-serif;
-  
+  --font-SG-medium: "Space Grotesk", sans-serif;
+  --font-DMMono-regular: "DM Mono", sans-serif;
 }
