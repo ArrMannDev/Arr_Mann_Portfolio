@@ -27,6 +27,14 @@ export const SmokeCursor = () => {
     const particles: Particle[] = [];
     const mouse = { x: -100, y: -100 };
 
+    const getCursorColor = () => {
+      const style = getComputedStyle(document.documentElement);
+      const color = style.getPropertyValue("--color-cursor").trim();
+      return color || "120, 120, 120";
+    };
+
+    let baseColor = getCursorColor();
+
     class Particle {
       x: number;
       y: number;
@@ -40,30 +48,29 @@ export const SmokeCursor = () => {
       constructor(x: number, y: number) {
         this.x = x;
         this.y = y;
-        this.size = Math.random() * 20 + 10; // Random size between 10 and 30
-        this.speedX = Math.random() * 1 - 0.5; // Random horizontal movement
-        this.speedY = Math.random() * 1 - 0.5 - 1; // Always float up slightly
+        this.size = Math.random() * 20 + 10;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5 - 1;
         this.maxLife = 100;
         this.life = this.maxLife;
-        // Grayish smoke color with varying opacity handled in draw
-        this.color = `rgba(120,120,120, ${Math.random() * 0.2 + 0.05})`;
+        this.color = baseColor;
       }
 
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        this.size *= 0.98; // Shrink slightly over time
+        this.size *= 0.98;
         this.life--;
       }
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = this.color;
-        ctx.globalAlpha = this.life / this.maxLife; // Fade out based on life
+        ctx.fillStyle = `rgba(${this.color}, 0.6)`; // More solid color
+        ctx.globalAlpha = this.life / this.maxLife;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
-        ctx.globalAlpha = 1; // Reset global alpha
+        ctx.globalAlpha = 1;
       }
     }
 
@@ -80,6 +87,11 @@ export const SmokeCursor = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
+
+      // Periodically update color in case theme changed
+      if (Math.random() < 0.02) {
+        baseColor = getCursorColor();
+      }
 
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
@@ -105,7 +117,7 @@ export const SmokeCursor = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-50 mix-blend-screen"
+      className="fixed inset-0 pointer-events-none z-50 dark:mix-blend-screen mix-blend-multiply opacity-80 dark:opacity-40"
       style={{ touchAction: "none" }}
     />
   );

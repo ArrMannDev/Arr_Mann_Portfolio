@@ -2,33 +2,37 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: "Space Grotesk";
   src: url("fonts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf");
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'DM Mono';
+  font-family: "DM Mono";
   src: url("fonts/DM_Mono/DMMono-Regular.ttf");
   font-style: normal;
 }
 
 /* Light theme */
 :root {
-  --color-bg: #F8FAFC;
-  --color-card: #FFFFFF;
-  --color-text: #0F172A;
+  --color-bg: #dee3e9;
+  --color-card: #b3eee8;
+  --color-text: #000000;
   --color-text-secondary: #475569;
-  --color-accent: #DE9323;
+  --color-accent: #de9323;
+  --color-cursor: 0, 191, 255; /* deep sky blue / cyan */
 }
 
 /* Dark theme */
 .dark {
-  --color-bg: #0F172A;
-  --color-card: #1E293B;
-  --color-text: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-accent: #DE9323;
+  --color-bg: #0f172a;
+  --color-card: #1e293b;
+  --color-text: #ffffff;
+  --color-text-secondary: #d6dbe2;
+  --color-accent: #de9323;
+  --color-blob-1: #3b82f622;
+  --color-blob-2: #6366f122;
+  --color-cursor: 120, 120, 120; /* gray */
 }
 
 @theme {

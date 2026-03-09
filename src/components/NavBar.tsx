@@ -42,7 +42,7 @@ const NavBar: React.FC = () => {
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-7xl transition-all duration-300 ease-in-out ${
         isScrolled
-          ? "py-3 bg-[var(--color-card)]/80 backdrop-blur-xl border border-[var(--color-text-secondary)]/30 shadow-2xl rounded-2xl"
+          ? "py-3 bg-(--color-card)/80 backdrop-blur-xl border border-(--color-text-secondary)/30 shadow-2xl rounded-2xl"
           : "py-5 bg-transparent border-transparent"
       }`}
     >
@@ -61,11 +61,11 @@ const NavBar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[var(--color-text-secondary)] hover:text-[var(--color-text)] transition-colors duration-200 text-sm font-medium relative group"
+                className="text-(--color-text-secondary) hover:text-(--color-text) transition-colors duration-200 text-sm font-medium relative group"
               >
                 {link.name}
 
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-(--color-accent) transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -73,14 +73,14 @@ const NavBar: React.FC = () => {
           {/* Buttons */}
           <div className="flex items-center gap-4">
             {/* Resume Button */}
-            <button className="px-6 py-2 rounded-full bg-[var(--color-card)] text-[var(--color-text)] border border-[var(--color-text-secondary)] text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
+            <button className="px-6 py-2 rounded-full bg-(--color-card) text-(--color-text) border border-(--color-text-secondary) text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
               Resume
             </button>
 
             {/* Theme Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="px-6 py-2 rounded-full bg-[var(--color-card)] text-[var(--color-text)] border border-[var(--color-text-secondary)] text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+              className="px-6 py-2 rounded-full bg-(--color-card) text-(--color-text) border border-(--color-text-secondary) text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
             >
               {isDarkMode ? "Light☀️" : "Dark🌙"}
             </button>
