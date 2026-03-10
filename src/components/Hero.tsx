@@ -2,6 +2,12 @@ import { motion } from "framer-motion";
 import SplitText from "./SplitText";
 import GridBackground from "./GridBackground";
 import type { HeroProps } from "../type/type";
+import { FaReact, FaJsSquare, FaNode } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt } from "react-icons/fa6";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { SiExpress, SiPrisma, SiNestjs } from "react-icons/si";
+import SkillsShowcase from "./SkillsShowcase";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 export default function Hero({ name, introText, image }: HeroProps) {
   return (
@@ -55,6 +61,23 @@ export default function Hero({ name, introText, image }: HeroProps) {
             {introText}
           </motion.p>
 
+          <SkillsShowcase
+            className="flex flex-row gap-2"
+            showCaseText="Tech Stack"
+            techIcons={[
+              { icon: FaHtml5, color: "text-orange-500" },
+              { icon: FaCss3Alt, color: "text-blue-500" },
+              { icon: RiTailwindCssFill, color: "text-cyan-400" },
+              { icon: FaJsSquare, color: "text-yellow-500" },
+              { icon: FaReact, color: "text-cyan-400" },
+              { icon: FaNode, color: "text-green-500" },
+              { icon: SiExpress, color: "text-green-500" },
+              { icon: SiPrisma, color: "text-blue-500" },
+              { icon: BiLogoPostgresql, color: "text-blue-500" },
+              { icon: SiNestjs, color: "text-red-500" },
+            ]}
+          />
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,7 +119,7 @@ export default function Hero({ name, introText, image }: HeroProps) {
                 <img
                   src={image}
                   alt={name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover transition-all duration-700"
                 />
               ) : (
                 <div className="text-8xl opacity-10 font-bold select-none text-(--color-text)">
