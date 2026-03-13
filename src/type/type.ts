@@ -19,3 +19,15 @@ export type SkillShowcaseProps = {
     color: string;
   }[];
 };
+
+export interface ProjectShowProps{
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  techStack: string[];
+  githubUrl?: string;
+  demoUrl?: string;
+  category: "Web" | "Mobile" | "Design" | "Other";
+}
+

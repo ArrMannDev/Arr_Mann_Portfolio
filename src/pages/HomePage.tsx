@@ -1,5 +1,6 @@
 import Hero from "../components/Hero";
 import profilePic from "../assets/img/Profile.jpg";
+import ProjectShow from "../components/ProjectShow";
 
 export default function HomePage() {
   const introText =
@@ -11,6 +12,7 @@ export default function HomePage() {
         introText={introText}
         image={profilePic}
       />
+      <ProjectShow />
     </div>
   );
 }
