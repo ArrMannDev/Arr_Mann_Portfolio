@@ -11,8 +11,8 @@ const projects: ProjectShowProps[] = [
       "A full-stack mobile-responsive web application for gym management system with admin dashboard panel.",
     image: gymImg,
     techStack: ["React", "Tailwind", "Nest.js", "PostgreSQL", "Prisma"],
-    githubUrl: "#",
-    demoUrl: "#",
+    githubUrl: "https://github.com/ArrMannDev/ygn_frontend.git",
+    demoUrl: "https://ygngym.vercel.app/",
     category: "Web",
   },
   {
