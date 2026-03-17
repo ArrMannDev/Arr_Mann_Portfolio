@@ -87,9 +87,11 @@ export default function Hero({ name, introText, image }: HeroProps) {
             <button className="px-8 py-3 rounded-xl bg-(--color-accent) text-black font-semibold hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-(--color-accent)/20">
               Work with me
             </button>
-            <button className="px-8 py-3 rounded-xl border-(--color-text-secondary)/30 bg-(--color-card)/50 backdrop-blur-md text-(--color-text) font-semibold hover:bg-(--color-card) transition-all">
-              View Projects
-            </button>
+            <a href="#projects">
+              <button className="px-8 py-3 rounded-xl border-(--color-text-secondary)/30 bg-(--color-card)/50 backdrop-blur-md text-(--color-text) font-semibold hover:bg-(--color-card) transition-all">
+                View Projects
+              </button>
+            </a>
           </motion.div>
         </motion.div>
 
