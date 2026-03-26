@@ -31,3 +31,12 @@ export interface ProjectShowProps{
   category: "Web" | "Mobile" | "Design" | "Other";
 }
 
+export type EducationItem = {
+  id: number;
+  title: string;
+  institution: string;
+  year: string;
+  description: string;
+};
+
+
