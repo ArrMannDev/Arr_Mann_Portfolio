@@ -5,9 +5,10 @@ import type { HeroProps } from "../type/type";
 import { FaReact, FaJsSquare, FaNode } from "react-icons/fa";
 import { FaHtml5, FaCss3Alt } from "react-icons/fa6";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { SiExpress, SiPrisma, SiNestjs } from "react-icons/si";
+import { SiExpress, SiPrisma, SiNestjs, SiTypescript } from "react-icons/si";
 import SkillsShowcase from "./SkillsShowcase";
 import { BiLogoPostgresql } from "react-icons/bi";
+import { SiSupabase } from "react-icons/si";
 
 export default function Hero({ name, introText, image }: HeroProps) {
   return (
@@ -62,19 +63,21 @@ export default function Hero({ name, introText, image }: HeroProps) {
           </motion.p>
 
           <SkillsShowcase
-            className="flex flex-row gap-2"
+            className="flex flex-row w-full gap-2"
             showCaseText="Tech Stack"
             techIcons={[
               { icon: FaHtml5, color: "text-orange-500" },
               { icon: FaCss3Alt, color: "text-blue-500" },
               { icon: RiTailwindCssFill, color: "text-cyan-400" },
               { icon: FaJsSquare, color: "text-yellow-500" },
+              { icon: SiTypescript, color: "text-blue-500" },
               { icon: FaReact, color: "text-cyan-400" },
               { icon: FaNode, color: "text-green-500" },
               { icon: SiExpress, color: "text-green-500" },
               { icon: SiPrisma, color: "text-blue-500" },
               { icon: BiLogoPostgresql, color: "text-blue-500" },
               { icon: SiNestjs, color: "text-red-500" },
+              { icon: SiSupabase, color: "text-green-500" },
             ]}
           />
 

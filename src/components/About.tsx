@@ -120,10 +120,10 @@ const About = () => {
                 AI Integration
               </span>
               <span className="px-3 py-1 bg-(--color-accent)/10 rounded-full text-(--color-accent) text-[10px] font-bold uppercase tracking-wider">
-                GraphQL
+                Machine Learning Model
               </span>
               <span className="px-3 py-1 bg-(--color-accent)/10 rounded-full text-(--color-accent) text-[10px] font-bold uppercase tracking-wider">
-                Cloud Native
+                React Native
               </span>
             </div>
           </motion.div>
