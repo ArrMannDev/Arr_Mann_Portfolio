@@ -12,19 +12,26 @@ export default function HomePage() {
   const educationData: EducationItem[] = [
     {
       id: 1,
-      title: "Bachelor of Science in Computer Science",
-      institution: "University of Technology",
-      year: "2019 - 2023",
-      description:
-        "Focused on software engineering, algorithms, and web technologies. Graduated with honors.",
+      title: "BSC (HONS) IN COMPUTER SCIENCE",
+      institution: "University of Sunderland",
+      year: "Coming Soon",
+      description: "-",
     },
     {
       id: 2,
-      title: "High School Diploma",
-      institution: "High School Name",
-      year: "2017 - 2019",
+      title: "HND Diploma in Computing",
+      institution: "Youth International College (YIC)",
+      year: "2024-2025",
       description:
-        "Participated in coding club and won several regional math competitions.",
+        "Focused on software engineering, algorithms, web technologies and machine learning. Graduated with honors.",
+    },
+    {
+      id: 3,
+      title: "BTEC International Level 3 Diploma in IT",
+      institution: "Youth International College (YIC)",
+      year: "2022-2023",
+      description:
+        "Focused on software development lifecycle, web technologies, hardware and networking. Graduated with honors.",
     },
   ];
 

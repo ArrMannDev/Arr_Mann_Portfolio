@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaGraduationCap, FaAward, FaCalendarAlt } from "react-icons/fa";
 import type { EducationItem } from "../type/type";
+import Folder from "../ui/Folder";
 
 type CertificateItem = {
   id: number;
@@ -124,37 +125,40 @@ export default function Educatuion({
             <h2 className="text-3xl font-bold">Certificates</h2>
           </motion.div>
 
-          <div className="flex flex-col gap-6 ml-0 md:ml-4">
-            {certificatesData.map((cert, index) => (
-              <motion.div
-                key={cert.id}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="group relative flex items-center gap-5 p-5 md:p-6 bg-(--color-card) rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-(--color-text-secondary)/10 hover:border-(--color-accent)/50 z-10 overflow-hidden"
-              >
-                {/* Accent glow behind icon */}
-                <div className="absolute -left-6 -top-6 w-24 h-24 bg-(--color-accent)/10 rounded-full blur-xl group-hover:bg-(--color-accent)/20 transition-all duration-500 -z-10"></div>
-
-                <div className="w-16 h-16 shrink-0 rounded-2xl bg-(--color-bg) flex justify-center items-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm">
-                  <FaAward className="text-3xl text-(--color-accent)" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-(--color-accent) transition-colors">
+          <div className="flex flex-col justify-center items-center gap-6 ml-0 md:ml-4">
+            <div className="text-center max-w-md">
+              <p className="text-lg text-(--color-text-secondary)">
+                A collection of certificates that showcase my continuous
+                learning journey in technology, software development, and modern
+                tools.
+              </p>
+            </div>
+            <Folder
+              size={2}
+              color="#9a95b2"
+              className="flex justify-center items-center z-10 mt-60 mb-8"
+              items={certificatesData.map((cert) => (
+                <div
+                  key={cert.id}
+                  className="w-full h-full p-2 flex flex-col justify-center items-center text-center bg-(--color-card) rounded-[8px] shadow-md border border-(--color-text-secondary)/20 cursor-default"
+                >
+                  <h3 className="text-[10px] font-bold text-(--color-text) mb-1 leading-tight">
                     {cert.title}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-3 text-sm text-(--color-text-secondary)">
-                    <span className="font-semibold px-2 py-1 bg-(--color-text-secondary)/10 rounded-md">
-                      {cert.issuer}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <FaCalendarAlt /> {cert.year}
-                    </span>
+                  <p className="text-[8px] text-(--color-accent) font-semibold mb-1">
+                    {cert.issuer}
+                  </p>
+                  <div className="inline-flex items-center gap-1 text-[7px] text-[#ffffff] bg-(--color-accent) px-1.5 py-0.5 rounded-full mt-auto mb-1">
+                    <FaCalendarAlt size={6} />
+                    <span>{cert.year}</span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            />
+
+            <div className="text-(--color-accent) text-lg font-semibold mt-20">
+              Click Above Folder to View All Certificates👆
+            </div>
           </div>
         </div>
       </div>
