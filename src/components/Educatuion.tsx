@@ -4,7 +4,7 @@ import { useState } from "react"; // ✅ added
 import type { EducationItem } from "../type/type";
 import Folder from "../ui/Folder";
 import type { CertificateItem } from "../type/type";
-import cert1 from "../assets/img/Level_3_Certificate.jpg";
+import cert1 from "../assets/img/Level_3.jpg";
 import cert2 from "../assets/img/A+.jpg";
 import cert3 from "../assets/img/python.jpg";
 
@@ -160,16 +160,16 @@ export default function Educatuion({
 
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50 p-4 md:p-8"
           onClick={() => setSelectedImage(null)}
         >
           <div
-            className="relative max-w-4xl w-full p-4"
+            className="relative flex justify-center items-center max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white text-2xl font-bold"
+              className="absolute -top-12 right-0 md:-right-8 text-white text-3xl font-bold hover:text-gray-300 transition-colors z-50"
             >
               ✕
             </button>
@@ -177,7 +177,7 @@ export default function Educatuion({
             <img
               src={selectedImage}
               alt="Full View"
-              className="w-full h-auto rounded-xl shadow-2xl"
+              className="w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
             />
           </div>
         </div>
