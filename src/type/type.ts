@@ -39,4 +39,11 @@ export type EducationItem = {
   description: string;
 };
 
+export type CertificateItem = {
+  id: number;
+  image: string;
+  title:string;
+};
+
+
 

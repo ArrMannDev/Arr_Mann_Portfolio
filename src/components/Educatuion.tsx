@@ -1,33 +1,28 @@
 import { motion } from "framer-motion";
 import { FaGraduationCap, FaAward, FaCalendarAlt } from "react-icons/fa";
+import { useState } from "react"; // ✅ added
 import type { EducationItem } from "../type/type";
 import Folder from "../ui/Folder";
-
-type CertificateItem = {
-  id: number;
-  title: string;
-  issuer: string;
-  year: string;
-};
+import type { CertificateItem } from "../type/type";
+import cert1 from "../assets/img/Level_3_Certificate.jpg";
+import cert2 from "../assets/img/A+.jpg";
+import cert3 from "../assets/img/python.jpg";
 
 const certificatesData: CertificateItem[] = [
   {
     id: 1,
-    title: "Full Stack Web Developer",
-    issuer: "Coursera",
-    year: "2023",
+    image: cert1,
+    title: "BTEC Level-3",
   },
   {
     id: 2,
-    title: "React Native Specialist",
-    issuer: "Udemy",
-    year: "2024",
+    image: cert2,
+    title: "A+",
   },
   {
     id: 3,
-    title: "Cloud Computing Fundamentals",
-    issuer: "AWS",
-    year: "2024",
+    image: cert3,
+    title: "Python Basic",
   },
 ];
 
@@ -36,6 +31,9 @@ export default function Educatuion({
 }: {
   educationData: EducationItem[];
 }) {
+  // ✅ added state
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div
       id="education"
@@ -75,7 +73,6 @@ export default function Educatuion({
             <h2 className="text-3xl font-bold">Education</h2>
           </motion.div>
 
-          {/* Timeline Container */}
           <div className="relative border-l-2 border-(--color-accent)/30 ml-6 flex flex-col gap-10 pb-8">
             {educationData.map((item, index) => (
               <motion.div
@@ -86,10 +83,8 @@ export default function Educatuion({
                 viewport={{ once: true }}
                 className="relative pl-8 md:pl-10"
               >
-                {/* Timeline Dot */}
                 <div className="absolute -left-[11px] top-6 w-5 h-5 bg-(--color-accent) rounded-full border-4 border-(--color-bg) shadow-sm"></div>
 
-                {/* Content Card */}
                 <div className="group bg-(--color-card) p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-(--color-text-secondary)/10 hover:border-(--color-accent)/50">
                   <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-(--color-accent) transition-colors">
                     {item.title}
@@ -110,7 +105,7 @@ export default function Educatuion({
           </div>
         </div>
 
-        {/* Right Side: Certificates Cards */}
+        {/* Right Side: Certificates */}
         <div className="w-full md:w-1/2 flex flex-col">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -133,24 +128,24 @@ export default function Educatuion({
                 tools.
               </p>
             </div>
+
             <Folder
               size={2}
               color="#9a95b2"
-              className="flex justify-center items-center z-10 mt-60 mb-8"
+              className="flex justify-center items-center z-10 mt-60 mb-8 overflow-b-hidden"
               items={certificatesData.map((cert) => (
                 <div
                   key={cert.id}
                   className="w-full h-full p-2 flex flex-col justify-center items-center text-center bg-(--color-card) rounded-[8px] shadow-md border border-(--color-text-secondary)/20 cursor-default"
+                  onClick={() => setSelectedImage(cert.image)}
                 >
-                  <h3 className="text-[10px] font-bold text-(--color-text) mb-1 leading-tight">
-                    {cert.title}
-                  </h3>
-                  <p className="text-[8px] text-(--color-accent) font-semibold mb-1">
-                    {cert.issuer}
-                  </p>
+                  <img
+                    src={cert.image}
+                    alt=""
+                    className="w-[55%] cursor-pointer hover:scale-105 transition"
+                  />
                   <div className="inline-flex items-center gap-1 text-[7px] text-[#ffffff] bg-(--color-accent) px-1.5 py-0.5 rounded-full mt-auto mb-1">
-                    <FaCalendarAlt size={6} />
-                    <span>{cert.year}</span>
+                    <span>{cert.title}</span>
                   </div>
                 </div>
               ))}
@@ -162,6 +157,31 @@ export default function Educatuion({
           </div>
         </div>
       </div>
+
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="relative max-w-4xl w-full p-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white text-2xl font-bold"
+            >
+              ✕
+            </button>
+
+            <img
+              src={selectedImage}
+              alt="Full View"
+              className="w-full h-auto rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
