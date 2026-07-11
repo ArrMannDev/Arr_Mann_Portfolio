@@ -32,7 +32,7 @@ const projects: ProjectShowProps[] = [
     id: "3",
     title: "Photo Uploader",
     description:
-      "The AI Model Scaling Calculator is an interactive visualization tool that estimates the computational requirements of AI models. By adjusting the model size, users can observe real-time changes in training compute, GPU training time, memory requirements, and inference speed, making it easier to understand the impact of scaling large language models.",
+      "A web App which can store the images of the users.",
     image: Snap_Zone,
     techStack: ["Ejs","Tailwind","Express.js","mySQL"],
     githubUrl: "https://github.com/ArrMannDev/Photo-Uploader",
