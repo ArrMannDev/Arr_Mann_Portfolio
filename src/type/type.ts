@@ -28,7 +28,7 @@ export interface ProjectShowProps{
   techStack: string[];
   githubUrl?: string;
   demoUrl?: string;
-  category: "Web" | "Mobile" | "Design" | "Other";
+  category: "Web" | "Mobile" | "Design" |"Web App"| "Other";
 }
 
 export type EducationItem = {

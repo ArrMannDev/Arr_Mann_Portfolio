@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import resumePdf from "../assets/img/ArrMannResume.pdf";
 
 const NavBar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,9 +74,14 @@ const NavBar: React.FC = () => {
           {/* Buttons */}
           <div className="flex items-center gap-4">
             {/* Resume Button */}
-            <button className="px-6 py-2 rounded-full bg-(--color-card) text-(--color-text) border border-(--color-text-secondary) text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg">
+            <a
+              href={resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 rounded-full bg-(--color-card) text-(--color-text) border border-(--color-text-secondary) text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+            >
               Resume
-            </button>
+            </a>
 
             {/* Theme Toggle */}
             <button

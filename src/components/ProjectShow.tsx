@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import type { ProjectShowProps } from "../type/type";
 import gymImg from "../assets/img/ygn-gym.png";
+import AI_Model_Scaling from "../assets/img/AI_Model_Scaling.png"
+import Snap_Zone from "../assets/img/Snap Zone.png"
 
 const projects: ProjectShowProps[] = [
   {
@@ -10,32 +12,32 @@ const projects: ProjectShowProps[] = [
     description:
       "A full-stack mobile-responsive web application for gym management system with admin dashboard panel.",
     image: gymImg,
-    techStack: ["React", "Tailwind", "Nest.js", "PostgreSQL", "Prisma"],
+    techStack: ["React", "Tailwind", "Nest.js", "PostgreSQL", "Prisma","TypeScript"],
     githubUrl: "https://github.com/ArrMannDev/ygn_frontend.git",
     demoUrl: "https://ygngym.vercel.app/",
     category: "Web",
   },
   {
     id: "2",
-    title: "Fitness Tracker App",
+    title: "Ai Model Scaling Calculator",
     description:
       "A mobile-responsive application for tracking workouts, nutrition, and personal progress with interactive charts.",
-    image: "",
-    techStack: ["React Native", "Firebase", "TypeScript"],
-    githubUrl: "#",
-    demoUrl: "#",
-    category: "Mobile",
+    image:AI_Model_Scaling,
+    techStack: ["React", "Tailwind", "recharts"],
+    githubUrl: "https://github.com/ArrMannDev/Model-Scaling-Calculator",
+    demoUrl: "https://model-scaling-calculator.vercel.app/",
+    category: "Web",
   },
   {
     id: "3",
-    title: "AI Image Generator",
+    title: "Photo Uploader",
     description:
-      "An interface for generating unique digital art using advanced AI models, featuring a community gallery.",
-    image: "",
-    techStack: ["Next.js", "OpenAI API", "Tailwind CSS"],
-    githubUrl: "#",
-    demoUrl: "#",
-    category: "Web",
+      "The AI Model Scaling Calculator is an interactive visualization tool that estimates the computational requirements of AI models. By adjusting the model size, users can observe real-time changes in training compute, GPU training time, memory requirements, and inference speed, making it easier to understand the impact of scaling large language models.",
+    image: Snap_Zone,
+    techStack: ["Ejs","Tailwind","Express.js","mySQL"],
+    githubUrl: "https://github.com/ArrMannDev/Photo-Uploader",
+    demoUrl: "https://github.com/ArrMannDev/Photo-Uploader",
+    category: "Web App",
   },
 ];
 
