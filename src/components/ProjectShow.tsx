@@ -1,147 +1,154 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import type { ProjectShowProps } from "../type/type";
-import gymImg from "../assets/img/ygn-gym.png";
-import AI_Model_Scaling from "../assets/img/AI_Model_Scaling.png"
-import Snap_Zone from "../assets/img/Snap Zone.png"
-
-const projects: ProjectShowProps[] = [
-  {
-    id: "1",
-    title: "YGN GYM",
-    description:
-      "A full-stack mobile-responsive web application for gym management system with admin dashboard panel.",
-    image: gymImg,
-    techStack: ["React", "Tailwind", "Nest.js", "PostgreSQL", "Prisma","TypeScript"],
-    githubUrl: "https://github.com/ArrMannDev/ygn_frontend.git",
-    demoUrl: "https://ygngym.vercel.app/",
-    category: "Web",
-  },
-  {
-    id: "2",
-    title: "Ai Model Scaling Calculator",
-    description:
-      "A mobile-responsive application for tracking workouts, nutrition, and personal progress with interactive charts.",
-    image:AI_Model_Scaling,
-    techStack: ["React", "Tailwind", "recharts"],
-    githubUrl: "https://github.com/ArrMannDev/Model-Scaling-Calculator",
-    demoUrl: "https://model-scaling-calculator.vercel.app/",
-    category: "Web",
-  },
-  {
-    id: "3",
-    title: "Photo Uploader",
-    description:
-      "A web App which can store the images of the users.",
-    image: Snap_Zone,
-    techStack: ["Ejs","Tailwind","Express.js","mySQL"],
-    githubUrl: "https://github.com/ArrMannDev/Photo-Uploader",
-    demoUrl: "https://github.com/ArrMannDev/Photo-Uploader",
-    category: "Web App",
-  },
-];
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { useState } from "react";
+import ProjectTag from "./ProjectTag";
+import { projects } from "../data";
 
 export default function ProjectShow() {
+  const [projectType, setProjectType] = useState<string>("Web");
+  const filteredProjects = projects.filter(
+    (project) => projectType === project.category
+  );
   return (
     <section
       id="projects"
-      className="py-24 px-6 dark:bg-(--color-bg) bg-[#f8fafc] transition-colors duration-500"
+      className="bg-[#f8fafc] px-6 py-24 transition-colors duration-500 dark:bg-(--color-bg)"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div className="mx-auto max-w-6xl">
+        {/* Section heading */}
+        <div className="mb-14 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="space-y-2">
-            <h2 className="text-(--color-text-secondary) font-DMMono-regular text-sm tracking-widest uppercase">
+            <h2 className="font-DMMono-regular text-sm uppercase tracking-widest text-(--color-text-secondary)">
               Portfolio
             </h2>
-            <h3 className="text-4xl md:text-5xl font-SG-medium text-(--color-text)">
+
+            <h3 className="font-SG-medium text-4xl text-(--color-text) md:text-5xl">
               Selected Projects
             </h3>
           </div>
-          <p className="text-(--color-text-secondary) font-DMMono-regular max-w-md">
+
+          <p className="max-w-md font-DMMono-regular text-(--color-text-secondary)">
             A collection of my recent work across various technologies and
             platforms.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
+        <ProjectTag props={{setProjectType}}/>
+
+        {/* Project list */}
+        <div className="space-y-10">
+          {filteredProjects.map((project, index) => (
+            <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative bg-(--color-card)/30 backdrop-blur-md rounded-3xl border border-(--color-text-secondary)/10 overflow-hidden hover:border-(--color-accent)/30 transition-all duration-500"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                delay: index * 0.1,
+                duration: 0.6,
+                ease: "easeOut",
+              }}
+              className="group grid overflow-hidden rounded-3xl border border-(--color-text-secondary)/10 bg-(--color-card)/30 backdrop-blur-md transition-all duration-500 hover:border-(--color-accent)/30 hover:shadow-xl md:grid-cols-2"
             >
-              {/* Project Image */}
-              <div className="relative aspect-video overflow-hidden bg-linear-to-br from-(--color-accent)/20 to-(--color-text-secondary)/10">
+              {/* Project image */}
+              <div className="relative min-h-64 overflow-hidden bg-linear-to-br from-(--color-accent)/20 to-(--color-text-secondary)/10 md:min-h-90">
                 {project.image && (
                   <img
                     src={project.image}
-                    alt={project.title}
-                    className="absolute inset-0 w-full h-full"
+                    alt={`${project.title} project preview`}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 )}
 
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
+                {/* Image overlay */}
+                <div className="absolute inset-0 flex items-center justify-center gap-4 bg-black/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                   <a
                     href={project.githubUrl}
-                    className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-(--color-accent) hover:text-black transition-all"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`View ${project.title} source code on GitHub`}
+                    className="translate-y-4 rounded-full bg-white/10 p-4 text-white opacity-0 backdrop-blur-md transition-all duration-500 hover:bg-(--color-accent) hover:text-black group-hover:translate-y-0 group-hover:opacity-100"
                   >
-                    <FaGithub size={20} />
+                    <FaGithub size={22} />
                   </a>
+
                   <a
                     href={project.demoUrl}
-                    className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-(--color-accent) hover:text-black transition-all"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`View ${project.title} live demo`}
+                    className="translate-y-4 rounded-full bg-white/10 p-4 text-white opacity-0 backdrop-blur-md transition-all delay-75 duration-500 hover:bg-(--color-accent) hover:text-black group-hover:translate-y-0 group-hover:opacity-100"
                   >
-                    <FaExternalLinkAlt size={18} />
+                    <FaExternalLinkAlt size={19} />
                   </a>
                 </div>
               </div>
 
-              {/* Project Info */}
-              <div className="p-6 space-y-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-DMMono-regular text-(--color-accent) uppercase tracking-tighter">
-                      {project.category}
-                    </span>
-                  </div>
-                  <h4 className="text-xl font-SG-medium text-(--color-text) group-hover:text-(--color-accent) transition-colors">
-                    {project.title}
-                  </h4>
-                  <p className="text-sm text-(--color-text-secondary) font-DMMono-regular line-clamp-2">
-                    {project.description}
-                  </p>
-                </div>
+              {/* Project information */}
+              <div className="flex flex-col justify-center p-7 sm:p-9 md:p-10">
+                <span className="mb-3 font-DMMono-regular text-xs uppercase tracking-widest text-(--color-accent)">
+                  {project.category}
+                </span>
 
-                <div className="flex flex-wrap gap-2 pt-2">
+                <h4 className="mb-4 font-SG-medium text-2xl text-(--color-text) transition-colors duration-300 group-hover:text-(--color-accent) md:text-3xl">
+                  {project.title}
+                </h4>
+
+                <p className="mb-7 font-DMMono-regular text-sm leading-7 text-(--color-text-secondary) md:text-base">
+                  {project.description}
+                </p>
+
+                {/* Technology tags */}
+                <div className="mb-8 flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 text-[10px] font-DMMono-regular rounded-md border border-(--color-text-secondary)/20 text-(--color-text-secondary) group-hover:border-(--color-accent)/20 transition-colors"
+                      className="rounded-md border border-(--color-text-secondary)/20 px-3 py-1.5 font-DMMono-regular text-[11px] text-(--color-text-secondary) transition-colors duration-300 group-hover:border-(--color-accent)/30"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
+
+                {/* Desktop project links */}
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-xl border border-(--color-text-secondary)/20 px-5 py-2.5 font-DMMono-regular text-sm text-(--color-text) transition-all duration-300 hover:border-(--color-accent) hover:bg-(--color-accent) hover:text-black"
+                  >
+                    <FaGithub size={17} />
+                    Source Code
+                  </a>
+
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-xl bg-(--color-accent) px-5 py-2.5 font-DMMono-regular text-sm text-black transition-all duration-300 hover:scale-105 hover:opacity-90"
+                  >
+                    <FaExternalLinkAlt size={14} />
+                    Live Demo
+                  </a>
+                </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
+        {/* View all button */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
           className="mt-16 flex justify-center"
         >
-          <button className="px-8 py-3 rounded-xl border border-(--color-text-secondary)/20 text-(--color-text) font-DMMono-regular hover:bg-(--color-accent) hover:text-black hover:border-(--color-accent) transition-all duration-300">
+          <button
+            type="button"
+            className="rounded-xl border border-(--color-text-secondary)/20 px-8 py-3 font-DMMono-regular text-(--color-text) transition-all duration-300 hover:border-(--color-accent) hover:bg-(--color-accent) hover:text-black"
+          >
             View All Projects
           </button>
         </motion.div>

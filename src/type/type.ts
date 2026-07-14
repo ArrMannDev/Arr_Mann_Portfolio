@@ -1,49 +1,49 @@
-import type { IconType } from "react-icons";
+  import type { IconType } from "react-icons";
 
-export interface NavLink {
+  export interface NavLink {
+      title: string;
+      href: string;
+  }
+
+  export type HeroProps = {
+      name: string;
+      introText: string;
+      image: string;
+  }
+
+  export type SkillShowcaseProps = {
+    className: string;
+    showCaseText: string;
+    techIcons: {
+      icon: IconType;
+      color: string;
+    }[];
+  };
+
+  export interface ProjectShowProps{
+    id: string;
     title: string;
-    href: string;
-}
-
-export type HeroProps = {
-    name: string;
-    introText: string;
+    description: string;
     image: string;
-}
+    techStack: string[];
+    githubUrl?: string;
+    demoUrl?: string;
+    category: "Web"|"n8n"|"ML";
+  }
 
-export type SkillShowcaseProps = {
-  className: string;
-  showCaseText: string;
-  techIcons: {
-    icon: IconType;
-    color: string;
-  }[];
-};
+  export type EducationItem = {
+    id: number;
+    title: string;
+    institution: string;
+    year: string;
+    description: string;
+  };
 
-export interface ProjectShowProps{
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  techStack: string[];
-  githubUrl?: string;
-  demoUrl?: string;
-  category: "Web" | "Mobile" | "Design" |"Web App"| "Other";
-}
-
-export type EducationItem = {
-  id: number;
-  title: string;
-  institution: string;
-  year: string;
-  description: string;
-};
-
-export type CertificateItem = {
-  id: number;
-  image: string;
-  title:string;
-};
+  export type CertificateItem = {
+    id: number;
+    image: string;
+    title:string;
+  };
 
 
 
