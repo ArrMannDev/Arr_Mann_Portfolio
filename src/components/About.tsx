@@ -1,140 +1,73 @@
-import { motion } from "framer-motion";
-import { FaCode, FaRocket, FaLightbulb } from "react-icons/fa";
+import { Browser, Database, FlowArrow } from "@phosphor-icons/react";
+import {
+  SiExpress,
+  SiGit,
+  SiJavascript,
+  SiNestjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiPython,
+  SiReact,
+  SiScikitlearn,
+  SiTailwindcss,
+  SiTypescript,
+  SiSupabase
+} from "react-icons/si";
 
-const About = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+const services = [
+  { title: "Web Development", icon: Browser },
+  { title: "Backend Development", icon: Database },
+  { title: "Workflow Automation", icon: FlowArrow },
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+const technologies = [
+  { name: "React", icon: SiReact, color: "#61dafb" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178c6" },
+  { name: "JavaScript", icon: SiJavascript, color: "#f7df1e" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06b6d4" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#5fa04e" },
+  { name: "NestJS", icon: SiNestjs, color: "#e0234e" },
+  { name: "Express", icon: SiExpress, color: "#f1f1f1" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169e1" },
+  { name: "Prisma", icon: SiPrisma, color: "#d7dce2" },
+  { name: "Python", icon: SiPython, color: "#ffd43b" },
+  { name: "Scikit-learn", icon: SiScikitlearn, color: "#f7931e" },
+  { name: "Git", icon: SiGit, color: "#f05032" },
+  { name: "Supabase", icon: SiSupabase, color: "#3ecf8e" },
+];
 
+export default function About() {
   return (
-    <section
-      id="about"
-      className="py-24 px-6 relative overflow-hidden bg-(--color-bg)"
-    >
-      <div className="max-w-6xl mx-auto z-10 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-sm font-DMMono-regular tracking-widest uppercase text-(--color-accent) mb-4">
-            About Me
-          </h2>
-          <h1 className="text-4xl md:text-5xl font-SG-medium text-(--color-text) mb-6">
-            Services, Goals & Growth
-          </h1>
-          <p className="text-(--color-text-secondary) font-DMMono-regular max-w-2xl mx-auto text-lg leading-relaxed">
-            I am a passionate developer dedicated to creating high-quality web
-            experiences. My approach combines technical expertise with a
-            commitment to continuous learning and excellence.
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {/* Services Section */}
-          <motion.div
-            variants={itemVariants}
-            className="p-8 rounded-2xl bg-(--color-card)/30 backdrop-blur-md border border-(--color-text-secondary)/20 hover:border-(--color-accent)/50 transition-all duration-300"
-          >
-            <div className="w-12 h-12 rounded-xl bg-(--color-accent)/20 flex items-center justify-center text-(--color-accent) mb-6">
-              <FaCode className="text-2xl" />
-            </div>
-            <h3 className="text-2xl font-SG-medium text-(--color-text) mb-4">
-              Services I Offer
-            </h3>
-            <ul className="space-y-3 text-(--color-text-secondary) font-DMMono-regular">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--color-accent)" />
-                Responsive Web Development
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--color-accent)" />
-                Backend API Architecture
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--color-accent)" />
-                Database Design & Management
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--color-accent)" />
-                Performance Optimization
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Goals Section */}
-          <motion.div
-            variants={itemVariants}
-            className="p-8 rounded-2xl bg-(--color-card)/30 backdrop-blur-md border border-(--color-text-secondary)/20 hover:border-(--color-accent)/50 transition-all duration-300 shadow-xl shadow-(--color-accent)/5"
-          >
-            <div className="w-12 h-12 rounded-xl bg-(--color-accent)/20 flex items-center justify-center text-(--color-accent) mb-6">
-              <FaRocket className="text-2xl" />
-            </div>
-            <h3 className="text-2xl font-SG-medium text-(--color-text) mb-4">
-              My Professional Goals
-            </h3>
-            <p className="text-(--color-text-secondary) font-DMMono-regular leading-relaxed">
-              My main goal is to build impactful software that solves complex
-              problems efficiently. I strive to deliver clean, maintainable code
-              and exceptional user experiences that make a difference in the
-              digital world.
-            </p>
-          </motion.div>
-
-          {/* Willingness to Learn Section */}
-          <motion.div
-            variants={itemVariants}
-            className="p-8 rounded-2xl bg-(--color-card)/30 backdrop-blur-md border border-(--color-text-secondary)/20 hover:border-(--color-accent)/50 transition-all duration-300"
-          >
-            <div className="w-12 h-12 rounded-xl bg-(--color-accent)/20 flex items-center justify-center text-(--color-accent) mb-6">
-              <FaLightbulb className="text-2xl" />
-            </div>
-            <h3 className="text-2xl font-SG-medium text-(--color-text) mb-4">
-              Continuous Learning
-            </h3>
-            <p className="text-(--color-text-secondary) font-DMMono-regular leading-relaxed mb-4">
-              I believe that stagnation is the enemy of innovation. I am always
-              eager to learn and adapt to new technologies.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-3 py-1 bg-(--color-accent)/10 rounded-full text-(--color-accent) text-[10px] font-bold uppercase tracking-wider">
-                AI Integration
-              </span>
-              <span className="px-3 py-1 bg-(--color-accent)/10 rounded-full text-(--color-accent) text-[10px] font-bold uppercase tracking-wider">
-                Machine Learning Model
-              </span>
-              <span className="px-3 py-1 bg-(--color-accent)/10 rounded-full text-(--color-accent) text-[10px] font-bold uppercase tracking-wider">
-                React Native
-              </span>
-            </div>
-          </motion.div>
-        </motion.div>
+    <section id="about" className="about-section" aria-labelledby="about-title">
+      <div className="about-services" aria-label="Development specialties">
+        {services.map(({ title, icon: Icon }) => (
+          <div className="about-service" key={title}>
+            <span className="about-service-marker" aria-hidden="true" />
+            <Icon size={37} weight="thin" aria-hidden="true" />
+            <h3>{title}</h3>
+          </div>
+        ))}
       </div>
 
-      {/* Decorative Blur Blobs */}
-      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-(--color-accent)/10 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 -right-20 w-80 h-80 bg-(--color-accent)/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="about-content">
+        <h2 id="about-title">About me</h2>
+        <p>
+          I build maintainable web products from interface to backend. I enjoy
+          turning real requirements into practical software, automation and
+          applied data work.
+        </p>
+
+        <h3 className="about-tech-title">Skills &amp; technologies</h3>
+        <ul className="about-tech-stack" aria-label="Technologies I use">
+          {technologies.map(({ name, icon: Icon, color }) => (
+            <li className="about-tech-logo" key={name} title={name}>
+              <Icon color={color} aria-hidden="true" />
+              <span className="sr-only">{name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
-};
-
-export default About;
+}

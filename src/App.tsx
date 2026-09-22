@@ -1,19 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PageLayOut from "./pages/PageLayOut";
-import HomePage from "./pages/HomePage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HeroPage from "./components/HeroPage";
+import Header from "./components/Header";
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route element={<PageLayOut />}>
-          <Route path="/" element={<HomePage />} />
-        </Route>
-
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <div className="portfolio-shell">
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HeroPage />} />
+          <Route path="/:section" element={<HeroPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;

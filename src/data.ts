@@ -1,104 +1,220 @@
-import type { ProjectShowProps } from "./type/type";
+import profileImage from "./assets/img/ArrMann.png";
+import resumePdf from "./assets/img/ArrMannResume.pdf";
+import gymImage from "./assets/img/ygn-gym.png";
+import modelScalingImage from "./assets/img/AI_Model_Scaling.png";
+import photoUploaderImage from "./assets/img/Snap Zone.png";
+import fireDetectionImage from "./assets/img/Fire_Alarm_Knn.png";
+import patientClusteringImage from "./assets/img/DBSCAN.png";
+import supportTicketImage from "./assets/img/Support-Ticket.png";
+import levelThreeCertificate from "./assets/img/Level_3.jpg";
+import aPlusCertificate from "./assets/img/A+.jpg";
+import pythonCertificate from "./assets/img/python.jpg";
 
-import gymImg from "./assets/img/ygn-gym.png";
-import AI_Model_Scaling from "./assets/img/AI_Model_Scaling.png";
-import Snap_Zone from "./assets/img/Snap Zone.png";
-import fireDetectionImage from "./assets/img/Fire_Alarm_Knn.png"
-import patientClusteringImage from "./assets/img/DBSCAN.png"
-import supportTicketAutomation from "./assets/img/Support-Ticket.png"
+export type ProjectCategory = "Web" | "Machine Learning" | "Automation";
 
-export const projects: ProjectShowProps[] = [
-  {
-    id: "1",
-    title: "YGN GYM",
-    description:
-      "A full-stack mobile-responsive web application for a gym management system with an admin dashboard panel.",
-    image: gymImg,
-    techStack: [
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  techStack: string[];
+  category: ProjectCategory;
+  role: string;
+  outcome?: string;
+  githubUrl?: string;
+  demoUrl?: string;
+  featured?: boolean;
+};
+
+export type Education = {
+  id: string;
+  title: string;
+  institution: string;
+  period: string;
+  status: "completed" | "planned";
+  description: string;
+};
+
+export const portfolioData = {
+  person: {
+    name: "Arr Mann Win Myint",
+    shortName: "Arr Mann",
+    initials: "AM",
+    role: "Full-Stack Developer",
+    location: "Myanmar",
+    availability: "Available for selected work",
+    profileImage,
+    resumePdf,
+    introduction:
+      "I’m a Full-Stack Developer turning real requirements into maintainable products, with equal attention to interface, logic, and everyday usability.",
+    about:
+      "I am a developer focused on turning real requirements into maintainable products. I care about the interface, the logic behind it, and how both perform in daily use.",
+    githubUrl: "https://github.com/ArrMannDev",
+  },
+  focusAreas: [
+    "Web applications",
+    "Backend APIs",
+    "Workflow automation",
+    "Applied machine learning",
+  ],
+  capabilities: [
+    {
+      title: "Product interfaces",
+      description:
+        "Responsive React experiences with clear interaction patterns.",
+    },
+    {
+      title: "Backend systems",
+      description:
+        "APIs, relational data models, authentication, and deployment.",
+    },
+    {
+      title: "Workflow automation",
+      description: "Connected processes using n8n, messaging, and Google APIs.",
+    },
+    {
+      title: "Applied data work",
+      description: "Exploratory machine learning and practical visualizations.",
+    },
+  ],
+  skills: {
+    frontend: [
       "React",
-      "Tailwind",
-      "Nest.js",
-      "PostgreSQL",
-      "Prisma",
       "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "HTML",
+      "CSS",
     ],
-    githubUrl: "https://github.com/ArrMannDev/ygn_frontend.git",
-    demoUrl: "https://ygngym.vercel.app/",
-    category: "Web",
-  },
-  {
-    id: "2",
-    title: "AI Model Scaling Calculator",
-    description:
-      "A mobile-responsive calculator for exploring AI model scaling relationships with interactive charts and visual data.",
-    image: AI_Model_Scaling,
-    techStack: ["React", "Tailwind", "Recharts"],
-    githubUrl: "https://github.com/ArrMannDev/Model-Scaling-Calculator",
-    demoUrl: "https://model-scaling-calculator.vercel.app/",
-    category: "ML",
-  },
-  {
-    id: "3",
-    title: "Photo Uploader",
-    description:
-      "A web application that allows users to upload, store, and manage their images.",
-    image: Snap_Zone,
-    techStack: ["EJS", "Tailwind", "Express.js", "MySQL"],
-    githubUrl: "https://github.com/ArrMannDev/Photo-Uploader",
-    demoUrl: "https://github.com/ArrMannDev/Photo-Uploader",
-    category: "Web",
-  },
-  {
-    id: "4",
-    title: "IoT Fire Detection Classifier",
-    description:
-      "A machine-learning project that uses the K-Nearest Neighbors algorithm to detect fire from IoT sensor measurements. The model processes temperature, humidity, gas, pressure, and particle data and achieved nearly 100% test accuracy.",
-    image: fireDetectionImage,
-    techStack: [
-      "Python",
-      "Pandas",
-      "Scikit-learn",
-      "KNN",
-      "Matplotlib",
-      "Jupyter Notebook",
-    ],
-    githubUrl: "https://github.com/ArrMannDev/FIre-Alarm-Model-",
-    demoUrl: "https://github.com/ArrMannDev/FIre-Alarm-Model-",
-    category: "ML",
-  },
-  {
-    id: "5",
-    title: "Abnormal Patient Clustering",
-    description:
-      "An unsupervised machine-learning project that uses DBSCAN to group patient records and detect unusual health patterns from blood glucose, oxygen saturation, body temperature and heart-rate data.",
-    image: patientClusteringImage,
-    techStack: [
+    backend: ["Node.js", "NestJS", "Express.js", "REST APIs", "Prisma"],
+    dataAndMachineLearning: [
       "Python",
       "Pandas",
       "Scikit-learn",
       "DBSCAN",
-      "PCA",
-      "Matplotlib",
+      "KNN",
     ],
-    githubUrl: "YOUR_GITHUB_URL",
-    demoUrl: "YOUR_DEMO_URL",
-    category: "ML",
+    databasesAndTools: ["PostgreSQL", "MySQL", "Supabase", "n8n", "Git"],
   },
-  {
-    id: "6",
-    title: "AI Customer Support Automation",
-    description:
-      "An n8n workflow that automatically processes customer support tickets submitted through Google Forms. The workflow updates Google Sheets, sends email confirmations, and routes notifications to different Telegram support teams based on ticket categories.",
-    image: supportTicketAutomation,
-    techStack: [
-      "n8n",
-      "Google Sheets",
-      "Gmail API",
-      "Telegram Bot API",
-      "Google Forms"
-    ],
-    githubUrl: "...",
-    demoUrl: "...",
-    category: "n8n",
-  }
-];
+  projects: [
+    {
+      id: "ygn-gym",
+      title: "YGN GYM",
+      description:
+        "A responsive gym management platform with member-facing flows and an administration dashboard.",
+      image: gymImage,
+      techStack: ["React", "Nest.js", "PostgreSQL", "Prisma", "TypeScript"],
+      category: "Web",
+      role: "Full-stack development",
+      outcome:
+        "One system for managing day-to-day gym operations across desktop and mobile.",
+      githubUrl: "https://github.com/ArrMannDev/ygn_frontend.git",
+      demoUrl: "https://ygngym.vercel.app/",
+      featured: true,
+    },
+    {
+      id: "model-scaling-calculator",
+      title: "AI Model Scaling Calculator",
+      description:
+        "An interactive calculator that makes AI model scaling relationships easier to explore through charts and responsive inputs.",
+      image: modelScalingImage,
+      techStack: ["React", "Tailwind", "Recharts"],
+      category: "Machine Learning",
+      role: "Frontend and data visualization",
+      outcome: "Turns model-scaling concepts into a hands-on browser tool.",
+      githubUrl: "https://github.com/ArrMannDev/Model-Scaling-Calculator",
+      demoUrl: "https://model-scaling-calculator.vercel.app/",
+      featured: true,
+    },
+    {
+      id: "photo-uploader",
+      title: "Photo Uploader",
+      description:
+        "A web application for uploading, storing, and managing image collections.",
+      image: photoUploaderImage,
+      techStack: ["EJS", "Tailwind", "Express.js", "MySQL"],
+      category: "Web",
+      role: "Full-stack development",
+      githubUrl: "https://github.com/ArrMannDev/Photo-Uploader",
+    },
+    {
+      id: "iot-fire-detection",
+      title: "IoT Fire Detection Classifier",
+      description:
+        "A K-Nearest Neighbors classifier that evaluates IoT sensor readings to identify fire conditions.",
+      image: fireDetectionImage,
+      techStack: ["Python", "Pandas", "Scikit-learn", "KNN", "Jupyter"],
+      category: "Machine Learning",
+      role: "Machine learning",
+      githubUrl: "https://github.com/ArrMannDev/FIre-Alarm-Model-",
+    },
+    {
+      id: "patient-clustering",
+      title: "Abnormal Patient Clustering",
+      description:
+        "A DBSCAN study that groups patient records and identifies unusual health patterns across multiple measurements.",
+      image: patientClusteringImage,
+      techStack: ["Python", "Pandas", "DBSCAN", "PCA", "Matplotlib"],
+      category: "Machine Learning",
+      role: "Data analysis and clustering",
+    },
+    {
+      id: "support-ticket-automation",
+      title: "Support Ticket Automation",
+      description:
+        "An n8n workflow that records support requests, confirms submissions, and routes alerts to the correct support team.",
+      image: supportTicketImage,
+      techStack: ["n8n", "Google Sheets", "Gmail API", "Telegram Bot API"],
+      category: "Automation",
+      role: "Workflow automation",
+    },
+  ] satisfies Project[],
+  education: [
+    {
+      id: "bsc-computer-science",
+      title: "BSc (Hons) Computer Science",
+      institution: "University of Sunderland",
+      period: "Upcoming",
+      status: "planned",
+      description: "Planned next step in my computer science education.",
+    },
+    {
+      id: "hnd-computing",
+      title: "HND Diploma in Computing",
+      institution: "Youth International College (YIC)",
+      period: "2024-2025",
+      status: "completed",
+      description:
+        "Software engineering, algorithms, web technologies, and machine learning.",
+    },
+    {
+      id: "btec-it",
+      title: "BTEC International Level 3 Diploma in IT",
+      institution: "Youth International College (YIC)",
+      period: "2022-2023",
+      status: "completed",
+      description:
+        "Software development lifecycle, web technologies, hardware, and networking.",
+    },
+  ] satisfies Education[],
+  certificates: [
+    {
+      id: "btec-level-three",
+      title: "BTEC International Level 3 Diploma",
+      issuer: "Pearson",
+      image: levelThreeCertificate,
+    },
+    {
+      id: "a-plus",
+      title: "A+ Certification",
+      issuer: "Professional certificate",
+      image: aPlusCertificate,
+    },
+    {
+      id: "python-basics",
+      title: "Python Basics",
+      issuer: "Programming certificate",
+      image: pythonCertificate,
+    },
+  ],
+} as const;
