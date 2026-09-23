@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   ArrowRight,
-  ArrowUpRight,
   Certificate,
   CheckCircle,
   Code,
@@ -18,6 +17,7 @@ import { navigationLinks as links } from "../navigation";
 import About from "./About";
 import Projects from "./Projects";
 import Education from "./Education";
+import Contact from "./Contact";
 
 const technologyCount = new Set(Object.values(data.skills).flat()).size;
 const stats = [
@@ -96,32 +96,6 @@ function SectionPanel({ section }: { section: string }) {
               </div>
             </div>
           ))}
-        {section === "contact" && (
-          <>
-            <p>
-              Have a role or project in mind? Find my contact details in my
-              resume, or explore my work on GitHub.
-            </p>
-            <div className="hero-actions">
-              <a
-                className="button button-primary"
-                href={data.person.resumePdf}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open resume <ArrowUpRight />
-              </a>
-              <a
-                className="button button-secondary"
-                href={data.person.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub <GithubLogo />
-              </a>
-            </div>
-          </>
-        )}
         {!links.some(([, path]) => path === `/${section}`) && (
           <p>
             This page does not exist. <Link to="/">Return home</Link>.
@@ -134,11 +108,13 @@ function SectionPanel({ section }: { section: string }) {
 
 export default function HeroPage() {
   const { section } = useParams();
+  const { key: navigationKey } = useLocation();
   useEffect(() => {
     if (
       section !== "about" &&
       section !== "projects" &&
-      section !== "education"
+      section !== "education" &&
+      section !== "contact"
     )
       return;
 
@@ -149,7 +125,7 @@ export default function HeroPage() {
       behavior: reduceMotion ? "auto" : "smooth",
       block: "start",
     });
-  }, [section]);
+  }, [section, navigationKey]);
 
   return (
     <>
@@ -246,11 +222,13 @@ export default function HeroPage() {
         <About />
         <Projects />
         <Education />
+        <Contact />
       </main>
       {section &&
         section !== "about" &&
         section !== "projects" &&
-        section !== "education" && (
+        section !== "education" &&
+        section !== "contact" && (
         <SectionPanel key={section} section={section} />
       )}
     </>

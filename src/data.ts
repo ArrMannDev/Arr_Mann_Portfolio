@@ -12,6 +12,7 @@ import level3Result from "./assets/img/certificates/level3-result.png";
 import level5Diploma from "./assets/img/certificates/level5-diploma.png";
 import level5ResultOne from "./assets/img/certificates/level5-result-1.png";
 import level5ResultTwo from "./assets/img/certificates/level5-result-2.png";
+import pythonCertificate from "./assets/img/certificates/python.jpg";
 
 export type ProjectCategory = "Web" | "Machine Learning" | "Automation";
 
@@ -53,6 +54,9 @@ export const portfolioData = {
     about:
       "I am a developer focused on turning real requirements into maintainable products. I care about the interface, the logic behind it, and how both perform in daily use.",
     githubUrl: "https://github.com/ArrMannDev",
+    email: "arrmann632025@gmail.com",
+    phone: "+95 9 777 217 538",
+    phoneHref: "tel:+959777217538",
   },
   focusAreas: [
     "Web applications",
@@ -173,22 +177,31 @@ export const portfolioData = {
     },
   ] satisfies Project[],
   education: [
-    {
-      id: "bsc-computer-science",
-      title: "BSc (Hons) Computer Science",
-      institution: "University of Sunderland",
-      period: "Upcoming",
-      status: "planned",
-      description: "Planned next step in my computer science education.",
-    },
+    // {
+    //   id: "bsc-computer-science",
+    //   title: "BSc (Hons) Computer Science",
+    //   institution: "University of Sunderland",
+    //   period: "Upcoming",
+    //   status: "planned",
+    //   description: "Planned next step in my computer science education.",
+    // },
     {
       id: "hnd-computing",
-      title: "HND Diploma in Computing",
+      title: "Higher National Diploma in Computing",
       institution: "Youth International College (YIC)",
-      period: "2024-2025",
+      period: "2023-2025",
       status: "completed",
       description:
         "Software engineering, algorithms, web technologies, and machine learning.",
+    },
+    {
+      id: "python-data-analysis",
+      title: "Python for Data Analysis",
+      institution: "Click Top Engineering Co., Ltd.",
+      period: "10 Jan 2025 - 12 March 2025",
+      status: "completed",
+      description:
+        "Python programming, NumPy, Pandas, data visualization, and exploratory data analysis.",
     },
     {
       id: "kmd-a-plus",
@@ -209,6 +222,12 @@ export const portfolioData = {
     },
   ] satisfies Education[],
   certificates: [
+    {
+      id: "python-data-analysis",
+      title: "Python for Data Analysis",
+      issuer: "Click Top Engineering Co., Ltd.",
+      image: pythonCertificate,
+    },
     {
       id: "level3-diploma",
       title: "BTEC International Level 3 Diploma",

@@ -7,12 +7,9 @@ type Certificate = (typeof portfolioData.certificates)[number];
 
 const certificateIdsByEducation: Record<string, string[]> = {
   "bsc-computer-science": [],
-  "hnd-computing": [
-    "level5-diploma",
-    "level5-result-1",
-    "level5-result-2",
-  ],
+  "hnd-computing": ["level5-diploma", "level5-result-1", "level5-result-2"],
   "kmd-a-plus": ["a-plus"],
+  "python-data-analysis": ["python-data-analysis"],
   "btec-it": ["level3-diploma", "level3-result"],
 };
 
@@ -45,16 +42,16 @@ export default function Education() {
           A technical <strong>foundation.</strong>
         </h2>
         <p>
-          Formal study in computing and information technology at Youth
-          International College and KMD, followed by the next step at the
-          University of Sunderland.
+          My education has given me a strong foundation in software development,
+          web technologies and information technology. 
         </p>
       </header>
 
       <div className="education-timeline">
         {portfolioData.education.map((education, index) => {
-          const certificates = portfolioData.certificates.filter((certificate) =>
-            certificateIdsByEducation[education.id]?.includes(certificate.id),
+          const certificates = portfolioData.certificates.filter(
+            (certificate) =>
+              certificateIdsByEducation[education.id]?.includes(certificate.id),
           );
           const documentLabel =
             certificates.length === 1 ? "document" : "documents";
