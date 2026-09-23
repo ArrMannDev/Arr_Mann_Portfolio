@@ -6,9 +6,12 @@ import photoUploaderImage from "./assets/img/Snap Zone.png";
 import fireDetectionImage from "./assets/img/Fire_Alarm_Knn.png";
 import patientClusteringImage from "./assets/img/DBSCAN.png";
 import supportTicketImage from "./assets/img/Support-Ticket.png";
-import levelThreeCertificate from "./assets/img/Level_3.jpg";
-import aPlusCertificate from "./assets/img/A+.jpg";
-import pythonCertificate from "./assets/img/python.jpg";
+import aPlusCertificate from "./assets/img/certificates/A+-certificate.png";
+import level3Diploma from "./assets/img/certificates/level3-diploma.png";
+import level3Result from "./assets/img/certificates/level3-result.png";
+import level5Diploma from "./assets/img/certificates/level5-diploma.png";
+import level5ResultOne from "./assets/img/certificates/level5-result-1.png";
+import level5ResultTwo from "./assets/img/certificates/level5-result-2.png";
 
 export type ProjectCategory = "Web" | "Machine Learning" | "Automation";
 
@@ -188,6 +191,14 @@ export const portfolioData = {
         "Software engineering, algorithms, web technologies, and machine learning.",
     },
     {
+      id: "kmd-a-plus",
+      title: "KMD A+ Course",
+      institution: "KMD",
+      period: "28 Dec 2023 - 18 Jan 2024",
+      status: "completed",
+      description: "Computer hardware, troubleshooting, and IT support fundamentals.",
+    },
+    {
       id: "btec-it",
       title: "BTEC International Level 3 Diploma in IT",
       institution: "Youth International College (YIC)",
@@ -199,22 +210,40 @@ export const portfolioData = {
   ] satisfies Education[],
   certificates: [
     {
-      id: "btec-level-three",
+      id: "level3-diploma",
       title: "BTEC International Level 3 Diploma",
       issuer: "Pearson",
-      image: levelThreeCertificate,
+      image: level3Diploma,
+    },
+    {
+      id: "level3-result",
+      title: "BTEC International Level 3 Results",
+      issuer: "Pearson",
+      image: level3Result,
+    },
+    {
+      id: "level5-diploma",
+      title: "HND Diploma in Computing",
+      issuer: "Youth International College (YIC)",
+      image: level5Diploma,
+    },
+    {
+      id: "level5-result-1",
+      title: "HND Computing Results 1",
+      issuer: "Youth International College (YIC)",
+      image: level5ResultOne,
+    },
+    {
+      id: "level5-result-2",
+      title: "HND Computing Results 2",
+      issuer: "Youth International College (YIC)",
+      image: level5ResultTwo,
     },
     {
       id: "a-plus",
       title: "A+ Certification",
       issuer: "Professional certificate",
       image: aPlusCertificate,
-    },
-    {
-      id: "python-basics",
-      title: "Python Basics",
-      issuer: "Programming certificate",
-      image: pythonCertificate,
     },
   ],
 } as const;

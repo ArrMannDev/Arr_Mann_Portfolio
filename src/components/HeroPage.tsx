@@ -8,7 +8,6 @@ import {
   Code,
   FileText,
   GithubLogo,
-  GraduationCap,
   HandWaving,
   SquaresFour,
   Stack,
@@ -17,6 +16,8 @@ import {
 import { portfolioData as data } from "../data";
 import { navigationLinks as links } from "../navigation";
 import About from "./About";
+import Projects from "./Projects";
+import Education from "./Education";
 
 const technologyCount = new Set(Object.values(data.skills).flat()).size;
 const stats = [
@@ -95,38 +96,6 @@ function SectionPanel({ section }: { section: string }) {
               </div>
             </div>
           ))}
-        {section === "projects" &&
-          data.projects.map((project) => (
-            <article className="panel-project" key={project.id}>
-              <img src={project.image} alt={`${project.title} preview`} />
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                {"githubUrl" in project && (
-                  <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                    View source <ArrowUpRight />
-                  </a>
-                )}
-                {"demoUrl" in project && (
-                  <a href={project.demoUrl} target="_blank" rel="noreferrer">
-                    Live project <ArrowUpRight />
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
-        {section === "education" &&
-          data.education.map((item) => (
-            <article className="panel-group" key={item.id}>
-              <GraduationCap size={26} />
-              <h3>{item.title}</h3>
-              <p>
-                {item.institution}
-                <br />
-                {item.period} · {item.status}
-              </p>
-            </article>
-          ))}
         {section === "contact" && (
           <>
             <p>
@@ -166,12 +135,17 @@ function SectionPanel({ section }: { section: string }) {
 export default function HeroPage() {
   const { section } = useParams();
   useEffect(() => {
-    if (section !== "about") return;
+    if (
+      section !== "about" &&
+      section !== "projects" &&
+      section !== "education"
+    )
+      return;
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    document.getElementById("about")?.scrollIntoView({
+    document.getElementById(section)?.scrollIntoView({
       behavior: reduceMotion ? "auto" : "smooth",
       block: "start",
     });
@@ -270,8 +244,13 @@ export default function HeroPage() {
           ))}
         </section>
         <About />
+        <Projects />
+        <Education />
       </main>
-      {section && section !== "about" && (
+      {section &&
+        section !== "about" &&
+        section !== "projects" &&
+        section !== "education" && (
         <SectionPanel key={section} section={section} />
       )}
     </>
